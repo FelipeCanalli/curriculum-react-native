@@ -64,7 +64,7 @@ const estilos = StyleSheet.create({
   lista: {
     fontSize: 20,
     paddingBottom: 15,
-    textAlign: "justify",
+    textAlign: "left",
   },
   separator: {
     borderBottomWidth: 2,

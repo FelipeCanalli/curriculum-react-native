@@ -66,7 +66,6 @@ const estilos = StyleSheet.create({
   },
   info: {
     fontSize: 18,
-    textAlign: "justify",
   },
   email: {
     color: "#4086ff",
