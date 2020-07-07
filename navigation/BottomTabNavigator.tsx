@@ -1,35 +1,49 @@
-import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
+import { FontAwesome5 } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import * as React from "react";
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import Colors from "../constants/Colors";
+import useColorScheme from "../hooks/useColorScheme";
+import QuemSouScreen from "../screens/QuemSouScreen";
+import CompetenciasScreen from "../screens/CompetenciasScreen";
+import FormacaoScreen from "../screens/FormacaoScreen";
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+const BottomTab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName="QuemSou"
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+    >
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Quem Sou Eu"
+        component={QuemSouNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="user-circle" color={color} />
+          ),
         }}
       />
+
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Competências"
+        component={CompetenciasNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="github" color={color} />,
+        }}
+      />
+
+      <BottomTab.Screen
+        name="Formação Acadêmica"
+        component={FormacaoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="graduation-cap" color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -39,35 +53,48 @@ export default function BottomTabNavigator() {
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome5 size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
-
-function TabOneNavigator() {
+const QuemSouStack = createStackNavigator();
+function QuemSouNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <QuemSouStack.Navigator>
+      <QuemSouStack.Screen
+        name="QuemSouScreen"
+        component={QuemSouScreen}
+        options={{ headerTitle: "Quem sou eu" }}
       />
-    </TabOneStack.Navigator>
+    </QuemSouStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const CompetenciasStack = createStackNavigator();
 
-function TabTwoNavigator() {
+function CompetenciasNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <CompetenciasStack.Navigator>
+      <CompetenciasStack.Screen
+        name="CompetenciasScreen"
+        component={CompetenciasScreen}
+        options={{ headerTitle: " Competências" }}
       />
-    </TabTwoStack.Navigator>
+    </CompetenciasStack.Navigator>
+  );
+}
+
+const FormacaoStack = createStackNavigator();
+
+function FormacaoNavigator() {
+  return (
+    <FormacaoStack.Navigator>
+      <FormacaoStack.Screen
+        name="FormacaoScreen"
+        component={FormacaoScreen}
+        options={{ headerTitle: " Formação" }}
+      />
+    </FormacaoStack.Navigator>
   );
 }

@@ -4,14 +4,19 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  QuemsouParamList: undefined;
+  CompetenciasParamList: undefined;
+  FormacaoParamList: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type QuemSouParamList = {
+  QuemSouParamList: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type CompetenciasParamList = {
+  CompetenciasParamList: undefined;
+};
+
+export type FormacaoParamList = {
+  FormacaoParamList: undefined;
 };
